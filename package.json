@@ -1,0 +1,19 @@
+{
+  "name": "plist-converter",
+  "version": "0.0.0",
+  "description": "Automatically convert binary .plist files on OS X.",
+  "keywords": [
+    "plist",
+    "mac",
+    "osx"
+  ],
+  "engines": {
+    "atom": "*"
+  },
+  "homepage": "http://atom.io/packages/plist-converter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielbayley/atom-plist-converter.git"
+  },
+  "license": "MIT"
+}

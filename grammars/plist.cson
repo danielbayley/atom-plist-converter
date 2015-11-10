@@ -1,0 +1,8 @@
+'scopeName': 'source.plist' #text.xml.plist
+'fileTypes': [
+	'plist'
+]
+'firstLineMatch': '^bplist00.*'
+'patterns': [
+	'include': 'source.plist' #text.xml.plist
+]
