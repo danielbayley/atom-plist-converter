@@ -8,8 +8,8 @@ module.exports =
 
 			if /\.plist$/.test plist
 				# Convert from binary to XML for editing
-				exec "plutil -convert xml1 #{plist}"
+				exec "plutil -convert xml1 '#{plist}'"
 
 				# Convert back to binary from XML
-				editor.onDidDestroy ->
-					exec "plutil -convert binary1 #{plist}"
+				editor.onDidDestroy -> #onDidSave
+					exec "plutil -convert binary1 '#{plist}'"
