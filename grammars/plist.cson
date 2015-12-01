@@ -1,0 +1,10 @@
+'name': 'Property List (XML)'
+'scopeName': 'text.xml.plist'
+'fileTypes': [
+	'plist'
+	'strings'
+]
+'firstLineMatch': '^bplist00.*'
+'patterns': [
+	'include': 'text.xml.plist'
+]

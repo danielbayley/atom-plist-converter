@@ -5,7 +5,7 @@ module.exports = activate: ->
 
 		plist = editor.getPath()
 		#if editor.getGrammar().scopeName == 'text.xml.plist' #source.plist
-		if /\.plist$/.test plist
+		if /\.(plist|strings)$/.test plist
 
 			# Convert from binary to XML for editing
 			buffer = execSync "plutil -convert xml1 -o - '#{plist}'"
