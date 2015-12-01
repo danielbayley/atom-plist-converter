@@ -1,6 +1,6 @@
 {
   "name": "plist-converter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Automatically convert binary .plist files on OS X.",
   "keywords": [
     "plist",
