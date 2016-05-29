@@ -1,19 +1,25 @@
-{execSync,exec} = require 'child_process'
+{exec} = require 'child_process'
 
-module.exports = activate: ->
-	atom.workspace.observeTextEditors (editor) ->
+module.exports =
+	subs: null
+	activate: ->
+#-------------------------------------------------------------------------------
 
-		plist = editor.getPath()
-		#if editor.getGrammar().scopeName == 'text.xml.plist' #source.plist
-		if /\.(plist|strings)$/.test plist
+		@subs = atom.workspace.observeTextEditors (editor) ->
+			buffer = editor.buffer
+			plist = buffer.file?.path
+			{scopeName} = editor.getGrammar()
 
-			# Convert from binary to XML for editing
-			buffer = execSync "plutil -convert xml1 -o - '#{plist}'"
-			editor.setText buffer.toString()
-			#exec "plutil -convert xml1 '#{plist}'"
+			if /\.(plist|strings)$/.test(scopeName) and
+				buffer.getLines()[0].startsWith 'bplist00'
 
-			# Convert back to binary from XML
-			editor.onDidDestroy -> #onDidSave
-			#editor.buffer.onWillSave ->
-				exec "plutil -convert binary1 '#{plist}'"
-				#exec "plutil -convert binary1 -o - > '#{plist}'" #sudo?
+					# Convert from binary to XML for editing
+					{stdout} = exec "plutil -convert xml1 -o - '#{plist}'"
+					stdout.on 'data', (XML) -> editor.setText XML
+
+					# Convert back to binary from XML
+					editor.onDidDestroy ->
+						exec "plutil -convert binary1 '#{plist}'"
+
+#-------------------------------------------------------------------------------
+	deactivate: -> @subs.dispose()

@@ -4,16 +4,27 @@
   "description": "Automatically convert binary .plist files on OS X.",
   "keywords": [
     "plist",
+    "property list",
+    "convert",
     "mac",
     "osx"
   ],
-  "engines": {
-    "atom": "*"
-  },
   "homepage": "http://atom.io/packages/plist-converter",
   "repository": {
     "type": "git",
     "url": "https://github.com/danielbayley/atom-plist-converter.git"
   },
-  "license": "MIT"
+  "author": "Daniel Bayley <daniel.bayley@me.com> (https://github.com/danielbayley)",
+  "private": true,
+  "license": "MIT",
+  "os": [
+    "darwin"
+  ],
+  "engines": {
+    "atom": "*"
+  },
+  "activationHooks": [
+    "language-property-list:grammar-used",
+    "language-objective-c:grammar-used"
+  ]
 }
