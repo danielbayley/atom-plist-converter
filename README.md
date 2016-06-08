@@ -3,6 +3,10 @@
 
 Automatically convert binary `.plist` files with [Atom] on OS X.
 
+Install
+-------
+`apm install plist-converter` or search “plist” under packages within Atom.
+
 License
 -------
 [MIT] © [Daniel Bayley]

@@ -9,10 +9,13 @@
     "mac",
     "osx"
   ],
-  "homepage": "http://atom.io/packages/plist-converter",
+  "homepage": "https://atom.io/packages/plist-converter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/danielbayley/atom-plist-converter.git"
+    "url": "git+https://github.com/danielbayley/atom-plist-converter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danielbayley/atom-plist-converter/issues"
   },
   "author": "Daniel Bayley <daniel.bayley@me.com> (https://github.com/danielbayley)",
   "private": true,
