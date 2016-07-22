@@ -1,7 +1,6 @@
 {exec} = require 'child_process'
 
 module.exports =
-	subs: null
 	activate: ->
 #-------------------------------------------------------------------------------
 

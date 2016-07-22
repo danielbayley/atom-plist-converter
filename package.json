@@ -1,13 +1,12 @@
 {
   "name": "plist-converter",
   "version": "0.1.4",
-  "description": "Automatically convert binary .plist files on OS X.",
+  "description": "Automatically convert binary .plist files on macOS.",
   "keywords": [
     "plist",
     "property list",
     "convert",
-    "mac",
-    "osx"
+    "macOS"
   ],
   "homepage": "https://atom.io/packages/plist-converter",
   "repository": {
