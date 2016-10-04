@@ -6,7 +6,7 @@
     "plist",
     "property list",
     "convert",
-    "macOS"
+    "macos"
   ],
   "homepage": "https://atom.io/packages/plist-converter",
   "repository": {
