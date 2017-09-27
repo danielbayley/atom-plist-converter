@@ -1,24 +1,26 @@
 {exec} = require 'child_process'
 
-module.exports =
-  activate: ->
+subs = null
+activate = =>
+  sp = require 'simple-plist'
+  subs = atom.workspace.observeTextEditors (editor) =>
+    plist = editor.getPath()
+    {scopeName} = editor.getGrammar()
+
+    if /plist|strings/.test scopeName
+      [line] = editor.buffer?.getLines()
+      switch
+        when line?.startsWith 'bplist00'
+          data = sp.readFileSync plist
+          format = 'binary1'
+        else return
+
+      editor.save()
+      editor.setText sp.stringify data
+
+      editor.onDidDestroy => # Recompile to original format.
+        exec "plutil -convert #{format} '#{plist}'"
+
+deactivate = => subs.dispose()
 #-------------------------------------------------------------------------------
-
-    @subs = atom.workspace.observeTextEditors (editor) ->
-      buffer = editor.buffer
-      plist = buffer.file?.path
-      {scopeName} = editor.getGrammar()
-
-      if /\.(plist|strings)$/.test(scopeName) and
-        buffer.getLines()[0]?.startsWith 'bplist00'
-
-          # Convert from binary to XML for editing
-          {stdout} = exec "plutil -convert xml1 -o - '#{plist}'"
-          stdout.on 'data', (XML) -> editor.setText XML
-
-          # Convert back to binary from XML
-          editor.onDidDestroy ->
-            exec "plutil -convert binary1 '#{plist}'"
-
-#-------------------------------------------------------------------------------
-  deactivate: -> @subs.dispose()
+module.exports = {activate, deactivate}

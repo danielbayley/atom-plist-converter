@@ -28,5 +28,8 @@
   "activationHooks": [
     "language-property-list:grammar-used",
     "language-objective-c:grammar-used"
-  ]
+  ],
+  "dependencies": {
+    "simple-plist": "^0.2.1"
+  }
 }
