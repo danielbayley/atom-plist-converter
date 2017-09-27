@@ -13,6 +13,10 @@ activate = =>
         when line?.startsWith 'bplist00'
           data = sp.readFileSync plist
           format = 'binary1'
+
+        when line?.startsWith '{'
+          data = JSON.parse editor.getText()
+          format = 'json'
         else return
 
       editor.save()
