@@ -20,6 +20,7 @@ activate = =>
         else return
 
       editor.save()
+      editor.setGrammar atom.grammars.grammarForScopeName 'text.xml.plist'
       editor.setText sp.stringify data
 
       editor.onDidDestroy => # Recompile to original format.
